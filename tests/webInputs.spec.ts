@@ -1,11 +1,18 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "../fixtures/test.fixtures";
+import { WebInputsPage } from '../pages/webInputs.page';
+import testData from '../test-data/webInputs.json';
+
+let webInputsPage: WebInputsPage;
+
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://practice.expandtesting.com/inputs');
+  const tryItOut = page.getByRole("link", { name: "Try it out" });
+  await tryItOut.nth(0).click();
+
+  webInputsPage = new WebInputsPage(page)
 });
 
-test('Input number', async ({ page }) => {
-  await page.getByLabel('Input: Number').fill('123');
-  await expect(page.getByLabel('Input: Number')).toHaveValue('123');
+test("Input number", async ({ page }) => {
+  await webInputsPage.inputNumber.fill(testData.inputNumber);
+  await expect(webInputsPage.inputNumber).toHaveValue(testData.inputNumber);
 });
-
