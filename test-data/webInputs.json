@@ -1,3 +1,6 @@
 {
-  "inputNumber": "123"
+  "inputNumber": "123",
+  "inputText": "Test",
+  "inputPassword": "Test123",
+  "inputDate": "2026-05-05"
 }

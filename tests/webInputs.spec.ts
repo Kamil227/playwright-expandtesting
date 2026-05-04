@@ -16,3 +16,19 @@ test("Input number", async ({ page }) => {
   await webInputsPage.inputNumber.fill(testData.inputNumber);
   await expect(webInputsPage.inputNumber).toHaveValue(testData.inputNumber);
 });
+
+test("Input text", async ({}) => {
+  await webInputsPage.inputText.fill(testData.inputText)
+  await expect(webInputsPage.inputText).toHaveValue(testData.inputText)
+});
+
+test("Input password", async ({}) => {
+  await webInputsPage.inputPassword.fill(testData.inputPassword)
+  await webInputsPage.buttonDisplayInputs.click()
+  await expect(webInputsPage.inputPassword).toHaveValue(testData.inputPassword)
+});
+
+test("Input date", async ({}) => {
+  await webInputsPage.inputDate.fill(testData.inputDate)
+  await expect(webInputsPage.inputDate).toHaveValue(testData.inputDate)
+});
