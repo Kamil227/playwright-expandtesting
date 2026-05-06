@@ -1,5 +1,6 @@
 import { test, expect } from "../fixtures/test.fixtures";
 import { LoginPage } from "../pages/loginPage.page";
+import loginPageData, { loginpagedata } from "../test-data/loginPageData.json";
 
 let loginPage: LoginPage;
 
@@ -10,6 +11,14 @@ test.beforeEach(async ({ page }) => {
   loginPage = new LoginPage(page);
 });
 
-test("Login page opens", async ({}) => {
-  await expect(loginPage).toBeTruthy();
+test("Walidacja - brak loginu i hasła", async ({}) => {
+  await loginPage.loginButton.click();
+  await expect(loginPage.validationMassege).toBeVisible();
+});
+
+test("Walidacja - hasla", async ({}) => {
+  await loginPage.userName.fill(loginPageData.loginInput)
+  await loginPage.password.fill(loginPageData.incorrectPassword)
+  await loginPage.loginButton.click();
+  await expect(loginPage.validationPassword).toBeVisible();
 });
