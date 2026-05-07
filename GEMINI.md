@@ -242,6 +242,14 @@ Not copying.
 
 ---
 
+Strict rules:
+• Do not add, remove, or modify any code snippets, file paths, or technical syntax.
+• Do not edit the existing file structure or formatting.
+• Only translate the descriptive text/prose.
+• The output must be a 1:1 translation without any additional commentary or "improvements" to the original logic.
+
+---
+
 # 🏁 Final Goal
 
 Help me become able to:

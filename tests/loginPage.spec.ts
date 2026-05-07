@@ -1,6 +1,6 @@
 import { test, expect } from "../fixtures/test.fixtures";
 import { LoginPage } from "../pages/loginPage.page";
-import loginPageData, { loginpagedata } from "../test-data/loginPageData.json";
+import loginPageData from "../test-data/loginPageData.json";
 
 let loginPage: LoginPage;
 
@@ -17,8 +17,18 @@ test("Walidacja - brak loginu i hasła", async ({}) => {
 });
 
 test("Walidacja - hasla", async ({}) => {
-  await loginPage.userName.fill(loginPageData.loginInput)
-  await loginPage.password.fill(loginPageData.incorrectPassword)
+  await loginPage.userName.fill(loginPageData.loginInput);
+  await loginPage.password.fill(loginPageData.incorrectPassword);
   await loginPage.loginButton.click();
   await expect(loginPage.validationPassword).toBeVisible();
+});
+
+test("Poprawne logowanie", async ({}) => {
+  await loginPage.userName.fill(loginPageData.loginInput);
+  await loginPage.password.fill(loginPageData.passwordInput);
+  await loginPage.loginButton.click();
+  await expect(loginPage.loginApproveMessage).toBeVisible();
+  await expect(loginPage.heading).toBeVisible();
+  await loginPage.logoutButton.click();
+  await expect(loginPage.userName).toBeVisible();
 });
