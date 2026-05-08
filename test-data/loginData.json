@@ -1,0 +1,6 @@
+{
+  "loginInput": "practice",
+  "passwordInput": "SuperSecretPassword!",
+  "incorrectPassword": "t",
+  "emailAdress": "test@test.pl"
+}

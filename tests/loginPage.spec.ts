@@ -1,6 +1,6 @@
 import { test, expect } from "../fixtures/test.fixtures";
 import { LoginPage } from "../pages/loginPage.page";
-import loginPageData from "../test-data/loginPageData.json";
+import loginPageData from "../test-data/loginData.json";
 
 let loginPage: LoginPage;
 

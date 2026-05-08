@@ -8,20 +8,14 @@ let loginPage: LoginPage;
 
 test.beforeEach(async ({ page }) => {
   const tryItOut = page.getByRole("link", { name: "Try it out" });
-  await tryItOut.nth(2).click();
+  await tryItOut.nth(3).click();
 
   registerPage = new RegisterPage(page);
   loginPage = new LoginPage(page);
 });
 
-test("Udana rejestracja", async ({}) => {
-  await loginPage.userName.fill(loginPageData.loginInput);
-  await loginPage.password.fill(loginPageData.passwordInput);
-  await registerPage.confirmPassword.fill(loginPageData.passwordInput);
-  await registerPage.registerButton.click();
-  await expect(registerPage.successMessage).toBeVisible();
-});
-
-test("Przypomnienie hasła", async ({}) => {
-  
+test("Reset hasła", async ({}) => {
+  await registerPage.mailAdress.fill(loginPageData.emailAdress)
+  await registerPage.resetButton.click()
+  await expect(registerPage.resetMessage).toBeVisible()
 });
